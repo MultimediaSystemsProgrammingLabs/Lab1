@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SharpGL.SceneGraph;
+using SharpGL.OpenGLAttributes;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Multimedia1
 {
@@ -23,6 +12,18 @@ namespace Multimedia1
         public MainWindow()
         {
             InitializeComponent();
+            SharpGL.WPF.OpenGLControl op = new SharpGL.WPF.OpenGLControl();
+            op.Margin = new Thickness(0, 20, 0, 0);
+            op.DrawFPS = true;
+            op.OpenGLInitialized += Op_Initialized;
+            this.grid.Children.Add(op);
+        }
+
+        private void Op_Initialized(object sender, OpenGLEventArgs e)
+        {
+            var gl = e.OpenGL;
+            gl.ClearColor(1, 1, 1, 1);
+            gl.Begin(SharpGL.OpenGL.)
         }
     }
 }
